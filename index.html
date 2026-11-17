@@ -96,13 +96,11 @@ p{max-width:64ch}
 .hero-meta strong{display:block;font-family:var(--display);font-weight:400;font-size:1.9rem;color:var(--ink);font-variation-settings:"SOFT" 100;margin-bottom:2px}
 
 .stage{position:relative;height:min(74vh,680px);min-height:500px;display:flex;align-items:center;justify-content:center}
-.portrait{position:absolute;inset:2% 6% 2% 6%;border-radius:var(--arch);overflow:hidden;box-shadow:0 40px 80px -25px rgba(15,42,61,.35);z-index:2;transition:box-shadow .3s ease}
-.portrait:hover{box-shadow:0 48px 90px -20px rgba(15,42,61,.42)}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.06);transition:transform .6s ease}
-.portrait:hover img{transform:scale(1.09)}
-.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(44,122,134,0) 35%,rgba(29,90,101,.38) 100%),linear-gradient(20deg,rgba(217,234,238,.35),rgba(217,234,238,0) 45%);mix-blend-mode:multiply}
-.portrait .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,122,134,.50) 0%,rgba(44,122,134,.15) 32%,rgba(44,122,134,0) 55%);mix-blend-mode:multiply}
-.ring{position:absolute;inset:0 2% 4% 2%;border-radius:var(--arch);border:1.5px solid rgba(44,122,134,.35);z-index:1}
+.portrait{position:absolute;inset:2% 6% 2% 6%;border-radius:var(--arch);overflow:hidden;box-shadow:0 30px 70px -20px rgba(15,42,61,.28);z-index:2;transition:box-shadow .3s ease}
+.portrait:hover{box-shadow:0 40px 80px -15px rgba(15,42,61,.35)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.02);transition:transform .6s ease}
+.portrait:hover img{transform:scale(1.06)}
+.ring{position:absolute;inset:0 2% 4% 2%;border-radius:var(--arch);border:2px solid rgba(44,122,134,.25);z-index:1}
 
 /* Facts band */
 .band{background:var(--ink);color:var(--mist);padding:30px 0}
@@ -126,8 +124,8 @@ section{padding:110px 0}
 .treat-side h2{margin-bottom:18px}
 .treat-side .arch-photo{margin-top:36px;aspect-ratio:4/5;max-width:380px}
 .arch-photo{border-radius:var(--arch);overflow:hidden;position:relative;box-shadow:var(--shadow-md)}
-.arch-photo img{width:100%;height:100%;object-fit:cover}
-.arch-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,122,134,0) 50%,rgba(15,42,61,.4));mix-blend-mode:multiply}
+.arch-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.arch-photo:hover img{transform:scale(1.03)}
 
 .t-list{list-style:none;border-top:1px solid var(--line)}
 .t-list li{border-bottom:1px solid var(--line);transition:background .2s}
@@ -156,7 +154,7 @@ section{padding:110px 0}
 .slider-wrapper img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 .img-before{z-index:1}
 .img-after-box{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;z-index:2;width:50%}
-.img-after-box img{width:540px;max-width:none}
+.img-after-box img{position:absolute;top:0;left:0;height:100%;object-fit:cover;max-width:none}
 .slider-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--pearl);z-index:5;cursor:ew-resize}
 .slider-button{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:var(--ink);color:var(--pearl);border-radius:50%;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
 .slider-button svg{width:20px;height:20px}
@@ -185,8 +183,12 @@ section{padding:110px 0}
 .studio .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
 .studio-visual{position:relative;height:540px}
 .studio-room{position:absolute;inset:0;border-radius:32px;overflow:hidden;box-shadow:var(--shadow-md)}
-.studio-room img{width:100%;height:100%;object-fit:cover}
-.studio-room::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,234,238,.35),rgba(29,90,101,.25));mix-blend-mode:multiply}
+.studio-room img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.studio-room:hover img{transform:scale(1.02)}
+.doctor-badge-card{position:absolute;right:20px;bottom:20px;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);border-radius:20px;padding:12px 18px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-md);z-index:4}
+.doctor-badge-card img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top;background:var(--mist);border:2px solid var(--tide)}
+.doc-badge-info b{display:block;font-size:14.5px;color:var(--ink)}
+.doc-badge-info span{font-size:12px;color:var(--ink-soft)}
 .studio-copy h2{margin-bottom:24px}
 .studio-copy .lede{margin-bottom:34px}
 .creds{list-style:none;display:grid;gap:18px}
@@ -202,9 +204,22 @@ section{padding:110px 0}
 .doc-card{background:var(--porcelain);border:1px solid var(--line);border-radius:24px;padding:28px;transition:transform .2s,box-shadow .2s}
 .doc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
 .doc-avatar{width:72px;height:72px;border-radius:50%;background:var(--mist);display:grid;place-items:center;font-family:var(--display);font-size:1.6rem;color:var(--tide-deep);margin-bottom:18px}
+.doc-avatar-img{width:76px;height:76px;border-radius:50%;overflow:hidden;margin-bottom:18px;border:2.5px solid var(--tide);background:var(--mist)}
+.doc-avatar-img img{width:100%;height:100%;object-fit:cover;object-position:top center}
 .doc-card h3{font-size:1.35rem;margin-bottom:4px}
 .doc-role{font-size:13.5px;font-weight:600;color:var(--tide);margin-bottom:14px}
 .doc-card p{font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+
+/* Essentials Showcase */
+.essentials{background:var(--pearl);border-bottom:1px solid var(--line);padding:96px 0}
+.essentials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.ess-card{background:var(--porcelain);border:1px solid var(--line);border-radius:24px;padding:36px 28px;text-align:center;transition:transform .2s,box-shadow .2s}
+.ess-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.ess-img-wrap{height:160px;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.ess-img-wrap img{max-height:135px;width:auto;object-fit:contain;filter:drop-shadow(0 12px 18px rgba(15,42,61,.14));transition:transform .3s ease}
+.ess-card:hover .ess-img-wrap img{transform:scale(1.06)}
+.ess-card h3{font-size:1.35rem;margin-bottom:10px;color:var(--ink)}
+.ess-card p{font-size:14.5px;color:var(--ink-soft);line-height:1.55}
 
 /* Visit steps */
 .visit{background:var(--mist-2)}
@@ -219,8 +234,8 @@ section{padding:110px 0}
 
 /* Smile band */
 .smile{padding:0;position:relative;height:min(75vh,640px);overflow:hidden;color:var(--pearl)}
-.smile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.smile::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,42,61,.9) 0%,rgba(15,42,61,.6) 50%,rgba(29,90,101,.2) 100%)}
+.smile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% 35%}
+.smile::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,42,61,.92) 0%,rgba(15,42,61,.75) 38%,rgba(15,42,61,.2) 68%,transparent 100%)}
 .smile .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center}
 .smile h2{max-width:14ch;margin-bottom:20px}
 .smile p{color:rgba(234,243,245,.9);max-width:46ch;margin-bottom:34px;font-size:1.15rem}
@@ -339,7 +354,8 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
   .hero .wrap,.treat .wrap,.studio .wrap,.faq .wrap,.book .wrap{grid-template-columns:1fr;gap:50px}
   .stage{height:540px;min-height:0;max-width:500px;width:100%;margin:0 auto}
   .treat-side{position:static}
-  .treat-side .arch-photo{display:none}
+  .treat-side .arch-photo{max-width:320px;margin:24px auto 0}
+  .essentials-grid{grid-template-columns:1fr;gap:24px}
   .studio-visual{height:500px}
   .steps{grid-template-columns:1fr 1fr;row-gap:44px}
   .steps::before{display:none}
@@ -434,7 +450,6 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
         <div class="ring"></div>
         <div class="portrait">
           <img src="images/hero-smile.webp" alt="Patient smiling with confidence" fetchpriority="high">
-          <div class="tint"></div>
         </div>
       </div>
     </div>
@@ -462,6 +477,42 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
     </div>
   </div>
 
+  <!-- Clinical Care & Essentials Showcase (Photo Assets) -->
+  <section class="essentials" id="essentials" aria-labelledby="ess-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tagline">Studio Diagnostics & Care</span>
+        <h2 id="ess-title">Precision tools for calm, preventative dentistry</h2>
+        <p class="lede">Every diagnostic protocol, instrument, and care formulation at Arcline is selected to safeguard your natural enamel and gum health.</p>
+      </div>
+      <div class="essentials-grid">
+        <div class="ess-card">
+          <div class="ess-img-wrap">
+            <img src="images/float-molar.png" alt="Conservative Tooth Preservation" loading="eager">
+          </div>
+          <h3>Conservative Tooth Preservation</h3>
+          <p>We prioritize saving your natural tooth structure. 3D digital intraoral scanning detects microscopic micro-cavities years before pain occurs.</p>
+        </div>
+
+        <div class="ess-card">
+          <div class="ess-img-wrap">
+            <img src="images/float-brush.png" alt="Gentle Ultrasonic Oral Hygiene" loading="eager">
+          </div>
+          <h3>Gentle Ultrasonic & Soft-Care</h3>
+          <p>Hospital-grade piezoelectric ultrasonic scaling cleans deep tartar with warm water jets, causing zero scraping, sensitivity, or gum recession.</p>
+        </div>
+
+        <div class="ess-card">
+          <div class="ess-img-wrap">
+            <img src="images/float-tube.png" alt="Enamel Remineralizing Formulations" loading="eager">
+          </div>
+          <h3>Enamel Remineralization</h3>
+          <p>Medical-grade bio-active mineral therapies and custom trays rebuild enamel resilience against sensitivity and daily dietary acid wear.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Treatments Catalog -->
   <section class="treat" id="treatments" aria-labelledby="treat-title">
     <div class="wrap">
@@ -469,7 +520,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
         <span class="tagline">Clinical Specialties</span>
         <h2 id="treat-title">What we treat</h2>
         <p class="lede">From routine preventive cleans to complete smile rebuilds. All fees are transparent starting guides; you receive an itemized plan before any treatment begins.</p>
-        <div class="arch-photo"><img loading="lazy" src="images/treatment.webp" alt="Dentist discussing 3D treatment plan"></div>
+        <div class="arch-photo"><img src="images/treatment.webp" alt="Dentist discussing 3D treatment plan"></div>
       </div>
 
       <div>
@@ -760,7 +811,14 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
   <section class="studio" id="studio" aria-labelledby="studio-title">
     <div class="wrap">
       <div class="studio-visual" aria-hidden="true">
-        <div class="studio-room"><img loading="lazy" src="images/clinic.webp" alt="Arcline dental studio interior in Indiranagar"></div>
+        <div class="studio-room"><img src="images/clinic.webp" alt="Arcline dental studio interior in Indiranagar"></div>
+        <div class="doctor-badge-card">
+          <img src="images/doctor.png" alt="Dr. Ananya Rao">
+          <div class="doc-badge-info">
+            <b>Dr. Ananya Rao</b>
+            <span>Lead Prosthodontist & Founder</span>
+          </div>
+        </div>
       </div>
       <div class="studio-copy">
         <span class="tagline">Our Philosophy</span>
@@ -790,7 +848,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
 
       <div class="team-grid">
         <div class="doc-card">
-          <div class="doc-avatar">AR</div>
+          <div class="doc-avatar-img"><img src="images/doctor.png" alt="Dr. Ananya Rao"></div>
           <h3>Dr. Ananya Rao</h3>
           <div class="doc-role">Lead Prosthodontist & Implantologist</div>
           <p>MDS Prosthodontics with 12+ years of surgical experience. Specializes in guided implants, full smile rehabilitations, and aesthetic ceramic restorations.</p>
@@ -850,7 +908,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
 
   <!-- Smile Banner CTA -->
   <section class="smile" aria-labelledby="smile-title">
-    <img loading="lazy" src="images/smile-band.webp" alt="Patient confident smile">
+    <img src="images/smile-band.webp" alt="Patient confident smile">
     <div class="wrap">
       <h2 id="smile-title">Not sure where to begin?</h2>
       <p>Book an unhurried 20-minute diagnostic consultation. We will listen, inspect your teeth in 3D, and tell you honestly what is worth doing and what can safely wait.</p>
@@ -1203,12 +1261,24 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
   const resTabs = document.querySelectorAll('.res-tab');
   const imgBefore = document.getElementById('imgBefore');
   const imgAfter = document.getElementById('imgAfter');
+
+  function updateSliderWidth() {
+    if (diffSlider && imgAfter) {
+      imgAfter.style.width = diffSlider.offsetWidth + 'px';
+      imgAfter.style.height = diffSlider.offsetHeight + 'px';
+    }
+  }
+  window.addEventListener('resize', updateSliderWidth);
+  window.addEventListener('load', updateSliderWidth);
+  setTimeout(updateSliderWidth, 100);
+
   resTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       resTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       imgBefore.src = tab.dataset.imgB;
       imgAfter.src = tab.dataset.imgA;
+      updateSliderWidth();
     });
   });
 
