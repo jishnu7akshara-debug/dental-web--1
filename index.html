@@ -10,38 +10,42 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,100&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Preload critical hero image for instant rendering -->
+<link rel="preload" as="image" href="./images/hero-smile.webp" type="image/webp" fetchpriority="high">
 <script>
-// Universal Image Recovery: Automatically heals any image path if opened in subfolder, IDE preview, or file protocol
+// Fast Universal Image Recovery
 window.addEventListener('error', function(e) {
   if (e.target && e.target.tagName === 'IMG') {
     const img = e.target;
-    if (img.dataset.triedFallback) return;
-    img.dataset.triedFallback = 'true';
+    if (img.dataset.tried) return;
+    img.dataset.tried = '1';
 
     const src = img.getAttribute('src') || '';
-    const filename = src.split('/').pop().split('?')[0];
-    if (!filename) return;
+    const file = src.split('/').pop().split('?')[0];
+    const base = file.replace(/\.[^.]+$/, '');
+    if (!file) return;
 
-    const fallbacks = [
-      './images/' + filename,
-      'images/' + filename,
-      '/images/' + filename,
-      '/dental%20web%201/images/' + filename,
-      'http://localhost:3000/images/' + filename,
-      'https://raw.githubusercontent.com/jishnu7akshara-debug/dental-web--1/main/images/' + filename
+    const fastList = [
+      './images/' + file,
+      './images/' + base + '.webp',
+      './images/' + base + '.png',
+      'images/' + file,
+      '/dental%20web%201/images/' + file,
+      'http://localhost:3000/images/' + file,
+      'https://raw.githubusercontent.com/jishnu7akshara-debug/dental-web--1/main/images/' + file
     ];
 
-    let idx = 0;
-    function tryNext() {
-      if (idx >= fallbacks.length) return;
-      const nextSrc = fallbacks[idx++];
-      if (nextSrc === src) { tryNext(); return; }
-      const test = new Image();
-      test.onload = function() { img.src = nextSrc; };
-      test.onerror = tryNext;
-      test.src = nextSrc;
+    let i = 0;
+    function next() {
+      if (i >= fastList.length) return;
+      const s = fastList[i++];
+      if (s === src) { next(); return; }
+      const probe = new Image();
+      probe.onload = function() { img.src = s; };
+      probe.onerror = next;
+      probe.src = s;
     }
-    tryNext();
+    next();
   }
 }, true);
 </script>
@@ -484,7 +488,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
       <div class="stage" id="stage" aria-hidden="true">
         <div class="ring"></div>
         <div class="portrait">
-          <img src="./images/hero-smile.webp" alt="Patient smiling with confidence" fetchpriority="high">
+          <img src="./images/hero-smile.webp" alt="Patient smiling with confidence" width="800" height="1200" fetchpriority="high" decoding="async">
         </div>
       </div>
     </div>
@@ -523,7 +527,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
       <div class="essentials-grid">
         <div class="ess-card">
           <div class="ess-img-wrap">
-            <img src="./images/float-molar.png" alt="Conservative Tooth Preservation" loading="eager">
+            <img src="./images/float-molar.webp" alt="Conservative Tooth Preservation" width="320" height="320" loading="lazy" decoding="async">
           </div>
           <h3>Conservative Tooth Preservation</h3>
           <p>We prioritize saving your natural tooth structure. 3D digital intraoral scanning detects microscopic micro-cavities years before pain occurs.</p>
@@ -531,7 +535,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
 
         <div class="ess-card">
           <div class="ess-img-wrap">
-            <img src="./images/float-brush.png" alt="Gentle Ultrasonic Oral Hygiene" loading="eager">
+            <img src="./images/float-brush.webp" alt="Gentle Ultrasonic Oral Hygiene" width="80" height="800" loading="lazy" decoding="async">
           </div>
           <h3>Gentle Ultrasonic & Soft-Care</h3>
           <p>Hospital-grade piezoelectric ultrasonic scaling cleans deep tartar with warm water jets, causing zero scraping, sensitivity, or gum recession.</p>
@@ -539,7 +543,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
 
         <div class="ess-card">
           <div class="ess-img-wrap">
-            <img src="./images/float-tube.png" alt="Enamel Remineralizing Formulations" loading="eager">
+            <img src="./images/float-tube.webp" alt="Enamel Remineralizing Formulations" width="450" height="329" loading="lazy" decoding="async">
           </div>
           <h3>Enamel Remineralization</h3>
           <p>Medical-grade bio-active mineral therapies and custom trays rebuild enamel resilience against sensitivity and daily dietary acid wear.</p>
@@ -555,7 +559,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
         <span class="tagline">Clinical Specialties</span>
         <h2 id="treat-title">What we treat</h2>
         <p class="lede">From routine preventive cleans to complete smile rebuilds. All fees are transparent starting guides; you receive an itemized plan before any treatment begins.</p>
-        <div class="arch-photo"><img src="./images/treatment.webp" alt="Dentist discussing 3D treatment plan"></div>
+        <div class="arch-photo"><img src="./images/treatment.webp" alt="Dentist discussing 3D treatment plan" width="800" height="600" loading="lazy" decoding="async"></div>
       </div>
 
       <div>
@@ -737,9 +741,9 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
 
         <div>
           <div class="slider-wrapper" id="diffSlider">
-            <img src="./images/treatment.webp" alt="Before treatment smile" class="img-before" id="imgBefore">
+            <img src="./images/treatment.webp" alt="Before treatment smile" class="img-before" id="imgBefore" width="800" height="600" loading="lazy" decoding="async">
             <div class="img-after-box" id="imgAfterBox">
-              <img src="./images/hero-smile.webp" alt="After treatment smile" id="imgAfter">
+              <img src="./images/hero-smile.webp" alt="After treatment smile" id="imgAfter" width="800" height="1200" loading="lazy" decoding="async">
             </div>
             <span class="slider-label label-before">Before</span>
             <span class="slider-label label-after">After</span>
@@ -846,9 +850,9 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
   <section class="studio" id="studio" aria-labelledby="studio-title">
     <div class="wrap">
       <div class="studio-visual" aria-hidden="true">
-        <div class="studio-room"><img src="./images/clinic.webp" alt="Arcline dental studio interior in Indiranagar"></div>
+        <div class="studio-room"><img src="./images/clinic.webp" alt="Arcline dental studio interior in Indiranagar" width="1000" height="666" loading="lazy" decoding="async"></div>
         <div class="doctor-badge-card">
-          <img src="./images/doctor.png" alt="Dr. Ananya Rao">
+          <img src="./images/doctor.webp" alt="Dr. Ananya Rao" width="347" height="519" loading="lazy" decoding="async">
           <div class="doc-badge-info">
             <b>Dr. Ananya Rao</b>
             <span>Lead Prosthodontist & Founder</span>
@@ -883,7 +887,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
 
       <div class="team-grid">
         <div class="doc-card">
-          <div class="doc-avatar-img"><img src="./images/doctor.png" alt="Dr. Ananya Rao"></div>
+          <div class="doc-avatar-img"><img src="./images/doctor.webp" alt="Dr. Ananya Rao" width="347" height="519" loading="lazy" decoding="async"></div>
           <h3>Dr. Ananya Rao</h3>
           <div class="doc-role">Lead Prosthodontist & Implantologist</div>
           <p>MDS Prosthodontics with 12+ years of surgical experience. Specializes in guided implants, full smile rehabilitations, and aesthetic ceramic restorations.</p>
@@ -943,7 +947,7 @@ footer .logo{color:var(--pearl);font-size:1.25rem}
 
   <!-- Smile Banner CTA -->
   <section class="smile" aria-labelledby="smile-title">
-    <img src="./images/smile-band.webp" alt="Patient confident smile">
+    <img src="./images/smile-band.webp" alt="Patient confident smile" width="640" height="800" loading="lazy" decoding="async">
     <div class="wrap">
       <h2 id="smile-title">Not sure where to begin?</h2>
       <p>Book an unhurried 20-minute diagnostic consultation. We will listen, inspect your teeth in 3D, and tell you honestly what is worth doing and what can safely wait.</p>

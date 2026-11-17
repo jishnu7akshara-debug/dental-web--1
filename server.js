@@ -183,8 +183,15 @@ app.get('/api/stats', (req, res) => {
   });
 });
 
-// Serve static frontend files
-app.use(express.static(path.join(__dirname)));
+// Serve static frontend files with fast caching for images
+app.use(express.static(path.join(__dirname), {
+  maxAge: '7d',
+  setHeaders: (res, filePath) => {
+    if (/\.(webp|png|jpg|jpeg|svg|ico)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
+    }
+  }
+}));
 
 // Fallback to index.html for navigation
 app.use((req, res) => {
