@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arcline Dental Studio · Calm, Precise Dentistry · Indiranagar, Bengaluru</title>
+<meta name="description" content="Arcline Dental Studio — unhurried, calm dentistry in Indiranagar, Bengaluru. 40-minute appointments, clear aligners, dental implants, laser whitening, and same-day emergency care.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#0F2A3D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,100&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --porcelain:#F4F7F8;
+  --pearl:#FFFFFF;
+  --ink:#0F2A3D;
+  --ink-soft:#4A6070;
+  --ink-muted:#7A92A0;
+  --tide:#2C7A86;
+  --tide-deep:#1D5A65;
+  --tide-light:#3B96A5;
+  --mist:#D9EAEE;
+  --mist-2:#EAF3F5;
+  --line:#D3E1E5;
+  --green:#2E9468;
+  --green-bg:#E6F5EE;
+  --amber:#C77700;
+  --amber-bg:#FEF6E7;
+  --display:"Fraunces", Georgia, serif;
+  --body:"Figtree", system-ui, sans-serif;
+  --wrap:1240px;
+  --arch:999px 999px 32px 32px;
+  --shadow-sm:0 2px 10px rgba(15,42,61,.06);
+  --shadow-md:0 16px 36px -12px rgba(15,42,61,.14);
+  --shadow-lg:0 28px 60px -20px rgba(15,42,61,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--porcelain);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--tide);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+h1,h2,h3,h4{font-family:var(--display);font-weight:400;font-variation-settings:"SOFT" 100;letter-spacing:-.015em;line-height:1.1}
+h1{font-size:clamp(2.9rem,5.8vw,5.2rem);margin-bottom:24px}
+h2{font-size:clamp(2.1rem,4vw,3.2rem)}
+h3{font-size:1.45rem;line-height:1.25}
+p{max-width:64ch}
+.lede{font-size:1.15rem;color:var(--ink-soft);line-height:1.65}
+.tagline{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tide-deep);background:var(--mist);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px/1 var(--body);padding:16px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:all .25s ease}
+.btn-primary{background:var(--ink);color:var(--pearl)}
+.btn-primary:hover{background:var(--tide-deep);transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(15,42,61,.3)}
+.btn-accent{background:var(--tide);color:var(--pearl)}
+.btn-accent:hover{background:var(--tide-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink);background:rgba(255,255,255,.6)}
+.btn-white{background:var(--pearl);color:var(--ink)}
+.btn-white:hover{background:var(--mist);transform:translateY(-1px)}
+.btn-sm{padding:10px 18px;font-size:13.5px}
+
+/* Top bar */
+.top-notice{background:var(--ink);color:var(--mist);font-size:13px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.top-notice .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.top-notice-links{display:flex;align-items:center;gap:20px}
+.top-notice-links a{color:var(--pearl);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.top-notice-links a:hover{text-decoration:underline}
+.live-pill{display:inline-flex;align-items:center;gap:6px;color:#A3E5C8;font-weight:500}
+.live-dot{width:7px;height:7px;background:#3BB38A;border-radius:50%;box-shadow:0 0 0 3px rgba(59,179,138,.3);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.2)}}
+
+/* Navigation */
+.nav{position:sticky;top:0;z-index:90;transition:background .3s,box-shadow .3s,backdrop-filter .3s;background:rgba(244,247,248,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(211,225,229,.7)}
+.nav.scrolled{box-shadow:0 6px 20px -8px rgba(15,42,61,.08)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:80px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-size:1.45rem;font-variation-settings:"SOFT" 100;color:var(--ink)}
+.logo svg{width:34px;height:34px}
+.nav ul{display:flex;gap:28px;list-style:none}
+.nav ul a{text-decoration:none;font-weight:500;font-size:14.5px;color:var(--ink-soft);transition:color .2s}
+.nav ul a:hover{color:var(--ink)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.menu-toggle{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+.menu-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px auto;border-radius:2px;transition:transform .3s,opacity .3s}
+
+/* Hero */
+.hero{position:relative;padding:80px 0 90px;display:flex;align-items:center;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-14vw;top:-22vh;width:76vw;height:124vh;background:radial-gradient(closest-side,rgba(44,122,134,.20),rgba(217,234,238,.6) 55%,transparent 75%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;width:100%}
+.hero-copy .lede{margin-bottom:34px;max-width:48ch}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:36px;margin-top:48px;padding-top:28px;border-top:1px solid var(--line);max-width:540px}
+.hero-meta div{font-size:13.5px;color:var(--ink-soft);line-height:1.4}
+.hero-meta strong{display:block;font-family:var(--display);font-weight:400;font-size:1.9rem;color:var(--ink);font-variation-settings:"SOFT" 100;margin-bottom:2px}
+
+.stage{position:relative;height:min(74vh,680px);min-height:500px;display:flex;align-items:center;justify-content:center}
+.portrait{position:absolute;inset:2% 6% 2% 6%;border-radius:var(--arch);overflow:hidden;box-shadow:0 40px 80px -25px rgba(15,42,61,.35);z-index:2;transition:box-shadow .3s ease}
+.portrait:hover{box-shadow:0 48px 90px -20px rgba(15,42,61,.42)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.06);transition:transform .6s ease}
+.portrait:hover img{transform:scale(1.09)}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(44,122,134,0) 35%,rgba(29,90,101,.38) 100%),linear-gradient(20deg,rgba(217,234,238,.35),rgba(217,234,238,0) 45%);mix-blend-mode:multiply}
+.portrait .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,122,134,.50) 0%,rgba(44,122,134,.15) 32%,rgba(44,122,134,0) 55%);mix-blend-mode:multiply}
+.ring{position:absolute;inset:0 2% 4% 2%;border-radius:var(--arch);border:1.5px solid rgba(44,122,134,.35);z-index:1}
+
+/* Facts band */
+.band{background:var(--ink);color:var(--mist);padding:30px 0}
+.band .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:center}
+.band-item{display:flex;align-items:center;gap:14px;font-size:14.5px;line-height:1.35}
+.band-item svg{width:24px;height:24px;flex:none;stroke:#8CC9D1}
+
+section{padding:110px 0}
+
+/* Section Header */
+.sec-head{margin-bottom:54px;max-width:680px}
+.sec-head h2{margin-bottom:16px}
+
+/* Treatments */
+.treat-tabs{display:flex;gap:8px;margin-bottom:32px;overflow-x:auto;padding-bottom:8px}
+.treat-tab{background:var(--pearl);border:1px solid var(--line);padding:10px 18px;border-radius:999px;font:500 14px var(--body);color:var(--ink-soft);cursor:pointer;transition:.2s;white-space:nowrap}
+.treat-tab.active,.treat-tab:hover{background:var(--ink);color:var(--pearl);border-color:var(--ink)}
+
+.treat .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
+.treat-side{position:sticky;top:110px}
+.treat-side h2{margin-bottom:18px}
+.treat-side .arch-photo{margin-top:36px;aspect-ratio:4/5;max-width:380px}
+.arch-photo{border-radius:var(--arch);overflow:hidden;position:relative;box-shadow:var(--shadow-md)}
+.arch-photo img{width:100%;height:100%;object-fit:cover}
+.arch-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,122,134,0) 50%,rgba(15,42,61,.4));mix-blend-mode:multiply}
+
+.t-list{list-style:none;border-top:1px solid var(--line)}
+.t-list li{border-bottom:1px solid var(--line);transition:background .2s}
+.t-list li.open{background:rgba(255,255,255,.5)}
+.t-list button{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:1fr auto 28px;gap:20px;align-items:center;padding:26px 8px;cursor:pointer}
+.t-list button:focus-visible{outline:2px solid var(--tide);outline-offset:2px}
+.t-list h3{transition:color .2s}
+.t-list button:hover h3{color:var(--tide-deep)}
+.t-list .fee{font-size:14.5px;font-weight:600;color:var(--tide-deep);white-space:nowrap}
+.t-list .plus{width:28px;height:28px;position:relative}
+.t-list .plus::before,.t-list .plus::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1.5px;background:var(--ink);transform:translate(-50%,-50%);transition:transform .35s}
+.t-list .plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.t-list li.open .plus::after{transform:translate(-50%,-50%) rotate(0)}
+.t-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.2,.7,.2,1)}
+.t-list li.open .t-panel{grid-template-rows:1fr}
+.t-panel>div{overflow:hidden}
+.t-panel p{padding:0 8px 18px;color:var(--ink-soft);font-size:15px}
+.t-panel-meta{padding:0 8px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.t-badge-group{display:flex;gap:10px;font-size:13px;color:var(--ink-soft)}
+.t-badge-group span{background:var(--mist);padding:4px 10px;border-radius:6px;font-weight:500}
+
+/* Before & After Interactive Slider */
+.results{background:var(--pearl);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.results-container{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.slider-wrapper{position:relative;width:100%;max-width:540px;height:400px;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);user-select:none;touch-action:none}
+.slider-wrapper img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+.img-before{z-index:1}
+.img-after-box{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;z-index:2;width:50%}
+.img-after-box img{width:540px;max-width:none}
+.slider-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--pearl);z-index:5;cursor:ew-resize}
+.slider-button{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:var(--ink);color:var(--pearl);border-radius:50%;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.slider-button svg{width:20px;height:20px}
+.slider-label{position:absolute;top:16px;z-index:4;background:rgba(15,42,61,.75);color:var(--pearl);font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;backdrop-filter:blur(6px);text-transform:uppercase;letter-spacing:.05em}
+.label-before{left:16px}
+.label-after{right:16px}
+.results-nav{display:flex;gap:10px;margin-top:20px}
+.res-tab{background:var(--porcelain);border:1px solid var(--line);padding:8px 16px;border-radius:999px;font:500 13.5px var(--body);cursor:pointer;transition:.2s}
+.res-tab.active{background:var(--ink);color:var(--pearl);border-color:var(--ink)}
+
+/* Cost & EMI Calculator */
+.calc-card{background:var(--pearl);border:1px solid var(--line);border-radius:28px;padding:40px;box-shadow:var(--shadow-md);display:grid;grid-template-columns:1.2fr .8fr;gap:48px}
+.calc-inputs{display:grid;gap:24px}
+.calc-option{border:1px solid var(--line);padding:14px 18px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:.2s}
+.calc-option:hover{border-color:var(--tide)}
+.calc-option.selected{border-color:var(--tide);background:var(--mist-2)}
+.calc-option input{accent-color:var(--tide);width:18px;height:18px}
+.calc-result-box{background:var(--mist-2);border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between}
+.calc-total-label{font-size:13.5px;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em}
+.calc-total-val{font-family:var(--display);font-size:2.8rem;color:var(--ink);margin:8px 0 16px}
+.emi-badge{background:var(--green-bg);color:var(--green);display:inline-block;padding:6px 14px;border-radius:8px;font-weight:700;font-size:13px;margin-bottom:18px}
+.slider-range{width:100%;margin:14px 0 8px;accent-color:var(--tide)}
+
+/* Studio & Doctors */
+.studio{background:var(--porcelain);position:relative;overflow:hidden}
+.studio .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
+.studio-visual{position:relative;height:540px}
+.studio-room{position:absolute;inset:0;border-radius:32px;overflow:hidden;box-shadow:var(--shadow-md)}
+.studio-room img{width:100%;height:100%;object-fit:cover}
+.studio-room::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,234,238,.35),rgba(29,90,101,.25));mix-blend-mode:multiply}
+.studio-copy h2{margin-bottom:24px}
+.studio-copy .lede{margin-bottom:34px}
+.creds{list-style:none;display:grid;gap:18px}
+.creds li{display:grid;grid-template-columns:22px 1fr;gap:14px;font-size:15.5px}
+.creds svg{width:22px;height:22px;stroke:var(--tide);margin-top:2px}
+.sign{margin-top:34px;display:flex;align-items:center;gap:16px}
+.sign b{font-family:var(--display);font-weight:400;font-size:1.35rem;font-variation-settings:"SOFT" 100;display:block}
+.sign span{font-size:14px;color:var(--ink-soft)}
+
+/* Specialists Grid */
+.team{background:var(--pearl);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.doc-card{background:var(--porcelain);border:1px solid var(--line);border-radius:24px;padding:28px;transition:transform .2s,box-shadow .2s}
+.doc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.doc-avatar{width:72px;height:72px;border-radius:50%;background:var(--mist);display:grid;place-items:center;font-family:var(--display);font-size:1.6rem;color:var(--tide-deep);margin-bottom:18px}
+.doc-card h3{font-size:1.35rem;margin-bottom:4px}
+.doc-role{font-size:13.5px;font-weight:600;color:var(--tide);margin-bottom:14px}
+.doc-card p{font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+
+/* Visit steps */
+.visit{background:var(--mist-2)}
+.visit-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:64px}
+.visit-head p{max-width:44ch}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;list-style:none;position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:var(--line)}
+.step{padding-right:36px;position:relative}
+.step .n{width:54px;height:54px;border-radius:50%;background:var(--porcelain);box-shadow:inset 0 0 0 1.5px var(--tide);display:grid;place-items:center;font-family:var(--display);font-size:1.3rem;color:var(--tide-deep);margin-bottom:28px;position:relative}
+.step h3{margin-bottom:10px}
+.step p{font-size:15px;color:var(--ink-soft)}
+
+/* Smile band */
+.smile{padding:0;position:relative;height:min(75vh,640px);overflow:hidden;color:var(--pearl)}
+.smile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.smile::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,42,61,.9) 0%,rgba(15,42,61,.6) 50%,rgba(29,90,101,.2) 100%)}
+.smile .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center}
+.smile h2{max-width:14ch;margin-bottom:20px}
+.smile p{color:rgba(234,243,245,.9);max-width:46ch;margin-bottom:34px;font-size:1.15rem}
+
+/* Reviews */
+.reviews{background:var(--porcelain)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.rev-card{background:var(--pearl);border:1px solid var(--line);border-radius:22px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-sm);transition:transform .2s}
+.rev-card:hover{transform:translateY(-3px)}
+.stars{color:#F5A623;display:flex;gap:4px;margin-bottom:14px}
+.rev-card p{font-size:15px;color:var(--ink);line-height:1.6;margin-bottom:20px}
+.rev-author{display:flex;align-items:center;gap:12px}
+.rev-avatar{width:42px;height:42px;border-radius:50%;background:var(--mist-2);color:var(--tide-deep);display:grid;place-items:center;font-weight:700;font-size:15px}
+.rev-author b{display:block;font-size:14.5px}
+.rev-author span{font-size:12.5px;color:var(--ink-soft)}
+
+/* FAQ */
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:26px 0;display:flex;justify-content:space-between;gap:20px;font-family:var(--display);font-size:1.3rem;font-variation-settings:"SOFT" 100}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--body);font-weight:400;font-size:1.5rem;line-height:1;color:var(--tide);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 26px;color:var(--ink-soft);font-size:15.5px}
+
+/* Emergency Box */
+.emergency-banner{background:linear-gradient(135deg,#FFEFEF,#FFF6F6);border:1px solid #FFD1D1;border-radius:24px;padding:32px 40px;margin-bottom:60px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.emergency-info{display:flex;align-items:center;gap:20px}
+.emergency-icon{width:54px;height:54px;background:#D04437;color:var(--pearl);border-radius:16px;display:grid;place-items:center;flex-none}
+.emergency-icon svg{width:28px;height:28px}
+.emergency-text h3{font-size:1.35rem;color:#9B1C1C;margin-bottom:4px}
+.emergency-text p{font-size:14.5px;color:#771D1D}
+
+/* Booking Section */
+.book{background:var(--ink);color:var(--mist);border-radius:48px 48px 0 0;padding:110px 0 90px}
+.book .wrap{display:grid;grid-template-columns:1fr 1.08fr;gap:72px;align-items:start}
+.book h2{color:var(--pearl);margin-bottom:18px}
+.book .lede{color:rgba(217,234,238,.8)}
+.contact-lines{margin-top:40px;display:grid;gap:20px}
+.contact-lines div{display:grid;grid-template-columns:120px 1fr;font-size:15px}
+.contact-lines span{color:rgba(217,234,238,.6)}
+.contact-lines a{text-decoration:none;color:var(--pearl);font-weight:500}
+.contact-lines a:hover{text-decoration:underline}
+
+/* Booking Form */
+.booking-form-box{background:rgba(255,255,255,.05);border:1px solid rgba(217,234,238,.16);border-radius:32px;padding:40px;box-shadow:0 30px 60px rgba(0,0,0,.3)}
+form{display:grid;gap:20px}
+label{display:grid;gap:8px;font-size:13.5px;color:rgba(217,234,238,.9);font-weight:500}
+input,select,textarea{font:15px var(--body);color:var(--pearl);background:rgba(255,255,255,.08);border:1px solid rgba(217,234,238,.24);border-radius:12px;padding:14px 16px;transition:border-color .2s;outline:none}
+select option{color:var(--ink);background:var(--pearl)}
+input:focus,select:focus,textarea:focus{border-color:#8CC9D1;background:rgba(255,255,255,.12)}
+input::placeholder,textarea::placeholder{color:rgba(217,234,238,.45)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* Slots Picker */
+.slots-container{display:grid;gap:10px}
+.slots-label{font-size:13.5px;color:rgba(217,234,238,.9);font-weight:500}
+.slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.slot-btn{background:rgba(255,255,255,.08);border:1px solid rgba(217,234,238,.2);color:var(--pearl);padding:8px 6px;border-radius:8px;font:500 13px var(--body);cursor:pointer;transition:.15s;text-align:center}
+.slot-btn:hover:not(:disabled){background:rgba(255,255,255,.2);border-color:#8CC9D1}
+.slot-btn.selected{background:#8CC9D1;color:var(--ink);font-weight:700;border-color:#8CC9D1}
+.slot-btn:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+
+.form-err{font-size:13.5px;color:#FCA5A5;min-height:20px}
+.form-note{font-size:12.5px;color:rgba(217,234,238,.55);line-height:1.4}
+
+/* Success Card */
+.form-success-card{display:none;background:rgba(255,255,255,.08);border:1px solid rgba(217,234,238,.2);border-radius:24px;padding:36px;text-align:center}
+.form-success-card.active{display:block;animation:popIn .3s ease}
+.success-icon{width:64px;height:64px;background:var(--green);border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;color:var(--pearl)}
+.success-icon svg{width:32px;height:32px}
+.form-success-card h3{font-size:1.8rem;color:var(--pearl);margin-bottom:10px}
+.booking-ref-badge{display:inline-block;background:var(--mist);color:var(--ink);font-weight:700;font-size:15px;padding:6px 16px;border-radius:8px;margin:12px 0 18px}
+.success-actions{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+
+/* Map & Location card */
+.location-box{margin-top:36px;background:rgba(255,255,255,.06);border:1px solid rgba(217,234,238,.14);border-radius:20px;padding:24px}
+.location-box b{color:var(--pearl);display:block;margin-bottom:6px;font-size:15px}
+.location-box p{font-size:13.5px;color:rgba(217,234,238,.7);line-height:1.5}
+
+/* Footer */
+footer{background:var(--ink);color:rgba(217,234,238,.6);font-size:14px;padding:0 0 50px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid rgba(217,234,238,.14);padding-top:32px;flex-wrap:wrap}
+footer .logo{color:var(--pearl);font-size:1.25rem}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:rgba(217,234,238,.7);text-decoration:none}
+.footer-links a:hover{color:var(--pearl)}
+
+/* Floating Quick Action */
+.floating-actions{position:fixed;bottom:24px;right:24px;z-index:80;display:flex;flex-direction:column;gap:10px}
+.floating-btn{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;box-shadow:var(--shadow-lg);text-decoration:none;transition:transform .2s}
+.floating-btn:hover{transform:scale(1.08)}
+.fab-wa{background:#25D366;color:#FFF}
+.fab-call{background:var(--tide);color:#FFF}
+.floating-btn svg{width:26px;height:26px}
+
+/* Responsive */
+@media (max-width:1100px){
+  .band .wrap{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .rev-grid{grid-template-columns:1fr 1fr}
+  .calc-card{grid-template-columns:1fr;gap:32px}
+  .results-container{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:980px){
+  .nav ul,.nav .nav-actions .btn-desk{display:none}
+  .menu-toggle{display:block}
+  .nav.open{background:var(--porcelain)}
+  .nav.open ul{display:flex;flex-direction:column;gap:0;position:absolute;top:80px;left:0;right:0;background:var(--porcelain);padding:10px 32px 30px;box-shadow:0 20px 30px -20px rgba(15,42,61,.3)}
+  .nav.open ul a{display:block;padding:14px 0;font-size:18px;color:var(--ink)}
+  .nav.open .menu-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav.open .menu-toggle span:nth-child(2){opacity:0}
+  .nav.open .menu-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .hero{padding-top:60px}
+  .hero .wrap,.treat .wrap,.studio .wrap,.faq .wrap,.book .wrap{grid-template-columns:1fr;gap:50px}
+  .stage{height:540px;min-height:0;max-width:500px;width:100%;margin:0 auto}
+  .treat-side{position:static}
+  .treat-side .arch-photo{display:none}
+  .studio-visual{height:500px}
+  .steps{grid-template-columns:1fr 1fr;row-gap:44px}
+  .steps::before{display:none}
+  .visit-head{flex-direction:column;align-items:start}
+  section{padding:80px 0}
+}
+@media (max-width:640px){
+  .wrap{padding:0 20px}
+  body{font-size:16px}
+  h1{font-size:2.6rem}
+  .hero-meta{flex-direction:column;gap:18px}
+  .hero-meta strong{font-size:1.5rem}
+  .stage{height:420px}
+  .steps{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
+  .booking-form-box{padding:24px}
+  .band .wrap{grid-template-columns:1fr;gap:16px}
+  .t-list button{grid-template-columns:1fr 28px}
+  .t-list .fee{grid-column:1;grid-row:2;margin-top:-10px}
+  .contact-lines div{grid-template-columns:90px 1fr}
+  .studio-visual{height:420px}
+  .slider-wrapper{height:300px}
+}
+</style>
+</head>
+<body>
+
+<!-- Top Announcement Banner -->
+<div class="top-notice">
+  <div class="wrap">
+    <div class="live-pill">
+      <span class="live-dot"></span>
+      <span>Indiranagar Studio Open Today · 9:00 AM – 9:00 PM</span>
+    </div>
+    <div class="top-notice-links">
+      <a href="tel:+918041228900">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 80 4122 8900
+      </a>
+      <a href="/admin.html" style="opacity:.85">Reception Desk →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header Navigation -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Arcline Dental Studio, home">
+      <svg viewBox="0 0 34 34" fill="none" aria-hidden="true"><path d="M5 29V16C5 9.4 10.4 4 17 4s12 5.4 12 12v13" stroke="#0F2A3D" stroke-width="2.2" stroke-linecap="round"/><path d="M11 29V17a6 6 0 0 1 12 0v12" stroke="#2C7A86" stroke-width="2.2" stroke-linecap="round"/></svg>
+      Arcline
+    </a>
+    <nav aria-label="Main">
+      <ul id="menu">
+        <li><a href="#treatments">Treatments</a></li>
+        <li><a href="#results">Smile Results</a></li>
+        <li><a href="#calculator">Cost & EMI</a></li>
+        <li><a href="#studio">The Studio</a></li>
+        <li><a href="#team">Specialists</a></li>
+        <li><a href="#reviews">Patient Reviews</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="#book" class="btn btn-primary btn-desk">Book a visit</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero Section -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="tagline">Calm, Precise Dental Care</span>
+        <h1 id="hero-title">Dentistry that feels completely unhurried.</h1>
+        <p class="lede">A serene boutique studio in Indiranagar where every consultation runs a full forty minutes, every smile simulation is shown on 4K screens, and nobody is rushed out of the chair.</p>
+        <div class="hero-actions">
+          <a href="#book" class="btn btn-primary">Book a Consultation</a>
+          <a href="#treatments" class="btn btn-ghost">Explore Treatments</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>40 min</strong>Unhurried visit for every patient</div>
+          <div><strong>7 days</strong>Open 9 am – 9 pm, Sundays included</div>
+          <div><strong>Same day</strong>Priority slots for tooth emergency</div>
+        </div>
+      </div>
+
+      <div class="stage" id="stage" aria-hidden="true">
+        <div class="ring"></div>
+        <div class="portrait">
+          <img src="images/hero-smile.webp" alt="Patient smiling with confidence" fetchpriority="high">
+          <div class="tint"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Standards & Trust Band -->
+  <div class="band">
+    <div class="wrap">
+      <div class="band-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><strong>Appointments Start on Time</strong>Zero waiting room fatigue</div>
+      </div>
+      <div class="band-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="5" width="16" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <div><strong>Low-Dose 3D Scans</strong>Full digital intraoral preview</div>
+      </div>
+      <div class="band-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><strong>Class B Autoclave</strong>Pouched instruments opened in front of you</div>
+      </div>
+      <div class="band-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
+        <div><strong>100% Transparent Fees</strong>Written line-item estimates & 0% EMI</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treatments Catalog -->
+  <section class="treat" id="treatments" aria-labelledby="treat-title">
+    <div class="wrap">
+      <div class="treat-side">
+        <span class="tagline">Clinical Specialties</span>
+        <h2 id="treat-title">What we treat</h2>
+        <p class="lede">From routine preventive cleans to complete smile rebuilds. All fees are transparent starting guides; you receive an itemized plan before any treatment begins.</p>
+        <div class="arch-photo"><img loading="lazy" src="images/treatment.webp" alt="Dentist discussing 3D treatment plan"></div>
+      </div>
+
+      <div>
+        <div class="treat-tabs">
+          <button class="treat-tab active" data-filter="all">All Procedures</button>
+          <button class="treat-tab" data-filter="preventive">Routine & Cleans</button>
+          <button class="treat-tab" data-filter="cosmetic">Aligners & Cosmetics</button>
+          <button class="treat-tab" data-filter="surgical">Implants & Restorative</button>
+        </div>
+
+        <ul class="t-list" id="tlist">
+          <li class="open" data-cat="preventive">
+            <button aria-expanded="true">
+              <h3>Check-up, Digital Scan & Cleaning</h3>
+              <span class="fee">from ₹1,200</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="t-panel">
+              <div>
+                <p>A full oral health examination, periodontal gum screening, and ultrasonic scaling with diamond-paste polish. High-resolution intraoral photos let you see exactly what we see on screen.</p>
+                <div class="t-panel-meta">
+                  <div class="t-badge-group">
+                    <span>40 mins</span>
+                    <span>Painless Ultrasonic</span>
+                    <span>Includes 3D scan</span>
+                  </div>
+                  <a href="#book" class="btn btn-accent btn-sm" onclick="selectServiceInForm('Check-up and cleaning')">Book this treatment</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li data-cat="cosmetic">
+            <button aria-expanded="false">
+              <h3>Clear Invisible Aligners</h3>
+              <span class="fee">from ₹65,000</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="t-panel">
+              <div>
+                <p>Say goodbye to gooey impression paste. A 3D digital scan simulates your teeth moving week-by-week. You preview your finished smile before approving treatment, switching smooth custom trays at home.</p>
+                <div class="t-panel-meta">
+                  <div class="t-badge-group">
+                    <span>6 to 14 months</span>
+                    <span>0% Interest EMI</span>
+                    <span>3D Outcome Simulation</span>
+                  </div>
+                  <a href="#book" class="btn btn-accent btn-sm" onclick="selectServiceInForm('Clear aligners')">Book this treatment</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li data-cat="surgical">
+            <button aria-expanded="false">
+              <h3>Guided Dental Implants</h3>
+              <span class="fee">from ₹38,000</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="t-panel">
+              <div>
+                <p>Computer-guided titanium and zirconia fixtures planned on 3D CBCT scans for microscopic surgical precision. We fit a temporary cosmetic tooth on the same day in most cases so you never leave with a missing gap.</p>
+                <div class="t-panel-meta">
+                  <div class="t-badge-group">
+                    <span>Lifetime warranty</span>
+                    <span>Swiss & German Fixtures</span>
+                    <span>Same-day Temporary</span>
+                  </div>
+                  <a href="#book" class="btn btn-accent btn-sm" onclick="selectServiceInForm('Dental implants')">Book this treatment</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li data-cat="cosmetic">
+            <button aria-expanded="false">
+              <h3>Laser Teeth Whitening</h3>
+              <span class="fee">from ₹9,500</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="t-panel">
+              <div>
+                <p>In-studio Philips Zoom laser whitening in a single 60-minute session, lightening up to 6–8 shades. Enamel and gums are isolated with gingival barriers, preventing any post-procedure sensitivity.</p>
+                <div class="t-panel-meta">
+                  <div class="t-badge-group">
+                    <span>60 mins session</span>
+                    <span>Sensitivity-free</span>
+                    <span>Take-home Kit Included</span>
+                  </div>
+                  <a href="#book" class="btn btn-accent btn-sm" onclick="selectServiceInForm('Teeth whitening')">Book this treatment</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li data-cat="surgical">
+            <button aria-expanded="false">
+              <h3>Single-Visit Microscopic Root Canal</h3>
+              <span class="fee">from ₹6,500</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="t-panel">
+              <div>
+                <p>Performed under high-magnification Carl Zeiss optics with motorized rotary instruments. Computer-controlled localized numbness means you feel zero pain. Most patients tell us it felt just like a regular filling.</p>
+                <div class="t-panel-meta">
+                  <div class="t-badge-group">
+                    <span>1 to 2 visits</span>
+                    <span>The Wand® Numbness</span>
+                    <span>High Magnification</span>
+                  </div>
+                  <a href="#book" class="btn btn-accent btn-sm" onclick="selectServiceInForm('Root canal treatment')">Book this treatment</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li data-cat="cosmetic">
+            <button aria-expanded="false">
+              <h3>Handcrafted Porcelain Veneers & Crowns</h3>
+              <span class="fee">from ₹14,000</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="t-panel">
+              <div>
+                <p>Custom ultra-thin ceramic veneers shade-matched under natural daylight. We mock up the new smile architecture directly inside your mouth first so you approve the aesthetics and bite before final bonding.</p>
+                <div class="t-panel-meta">
+                  <div class="t-badge-group">
+                    <span>E.max Ceramic</span>
+                    <span>10-year Guarantee</span>
+                    <span>Natural Daylight Shade</span>
+                  </div>
+                  <a href="#book" class="btn btn-accent btn-sm" onclick="selectServiceInForm('Veneers and crowns')">Book this treatment</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li data-cat="preventive">
+            <button aria-expanded="false">
+              <h3>Gentle Pediatric Dentistry</h3>
+              <span class="fee">from ₹900</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="t-panel">
+              <div>
+                <p>Playful, anxiety-free visits for children. Fluoride strengthening, pit & fissure sealants to prevent cavities early, and friendly coaching for parents on brushing technique and diet.</p>
+                <div class="t-panel-meta">
+                  <div class="t-badge-group">
+                    <span>Child-friendly</span>
+                    <span>Cavity Prevention</span>
+                    <span>No-fear Environment</span>
+                  </div>
+                  <a href="#book" class="btn btn-accent btn-sm" onclick="selectServiceInForm('Children’s dentistry')">Book this treatment</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Before & After Slider -->
+  <section class="results" id="results" aria-labelledby="results-title">
+    <div class="wrap">
+      <div class="results-container">
+        <div>
+          <span class="tagline">Real Transformations</span>
+          <h2 id="results-title">See the results before you begin.</h2>
+          <p class="lede" style="margin-bottom:24px">Drag the comparison slider to inspect patient smile alignment, enamel whitening, and aesthetic restoration performed at Arcline.</p>
+          <div class="results-nav">
+            <button class="res-tab active" data-img-b="images/treatment.webp" data-img-a="images/hero-smile.webp">Clear Aligners (10 Mo)</button>
+            <button class="res-tab" data-img-b="images/treatment.webp" data-img-a="images/smile-band.webp">Teeth Whitening</button>
+          </div>
+          <div style="margin-top:28px">
+            <a href="#book" class="btn btn-primary">Book Your Smile Simulation</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="slider-wrapper" id="diffSlider">
+            <img src="images/treatment.webp" alt="Before treatment smile" class="img-before" id="imgBefore">
+            <div class="img-after-box" id="imgAfterBox">
+              <img src="images/hero-smile.webp" alt="After treatment smile" id="imgAfter">
+            </div>
+            <span class="slider-label label-before">Before</span>
+            <span class="slider-label label-after">After</span>
+            <div class="slider-handle" id="sliderHandle">
+              <div class="slider-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--ink-soft);text-align:center;margin-top:12px">← Drag slider left or right to compare →</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Cost & EMI Estimator -->
+  <section class="calculator" id="calculator" aria-labelledby="calc-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tagline">Transparent Pricing</span>
+        <h2 id="calc-title">Treatment Cost & 0% EMI Calculator</h2>
+        <p class="lede">No surprise bills. Select procedures to estimate your total treatment investment and calculate easy monthly payment plans.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-inputs">
+          <label class="calc-option selected">
+            <div>
+              <b style="display:block;font-size:15.5px">Comprehensive Check-up & 3D Scan</b>
+              <span style="font-size:13.5px;color:var(--ink-soft)">Complete diagnostic screening, scaling & polish</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <b>₹1,200</b>
+              <input type="checkbox" checked data-price="1200" class="calc-chk">
+            </div>
+          </label>
+
+          <label class="calc-option">
+            <div>
+              <b style="display:block;font-size:15.5px">In-Studio Laser Teeth Whitening</b>
+              <span style="font-size:13.5px;color:var(--ink-soft)">Philips Zoom 60-min painless session</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <b>₹9,500</b>
+              <input type="checkbox" data-price="9500" class="calc-chk">
+            </div>
+          </label>
+
+          <label class="calc-option">
+            <div>
+              <b style="display:block;font-size:15.5px">Invisible Clear Aligners Package</b>
+              <span style="font-size:13.5px;color:var(--ink-soft)">3D simulation, all custom trays & retention kit</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <b>₹65,000</b>
+              <input type="checkbox" data-price="65000" class="calc-chk">
+            </div>
+          </label>
+
+          <label class="calc-option">
+            <div>
+              <b style="display:block;font-size:15.5px">Titanium Guided Dental Implant</b>
+              <span style="font-size:13.5px;color:var(--ink-soft)">Swiss fixture + custom ceramic crown</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <b>₹38,000</b>
+              <input type="checkbox" data-price="38000" class="calc-chk">
+            </div>
+          </label>
+        </div>
+
+        <div class="calc-result-box">
+          <div>
+            <div class="calc-total-label">Estimated Total Investment</div>
+            <div class="calc-total-val" id="calcTotalDisplay">₹1,200</div>
+            <span class="emi-badge">0% Interest EMI Available</span>
+            <div style="margin-top:20px">
+              <div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px">
+                <span>Repayment Tenure</span>
+                <span id="tenureLabel">6 Months</span>
+              </div>
+              <input type="range" min="3" max="12" step="3" value="6" class="slider-range" id="tenureRange">
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft)">
+                <span>3 mos</span>
+                <span>6 mos</span>
+                <span>9 mos</span>
+                <span>12 mos</span>
+              </div>
+            </div>
+            <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--line)">
+              <div style="font-size:13px;color:var(--ink-soft)">Monthly Installment</div>
+              <div style="font-family:var(--display);font-size:1.8rem;color:var(--tide-deep);font-weight:500" id="calcEmiDisplay">₹200 / month</div>
+            </div>
+          </div>
+          <div style="margin-top:24px">
+            <a href="#book" class="btn btn-primary" style="width:100%">Book with this Estimate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio & Atmosphere -->
+  <section class="studio" id="studio" aria-labelledby="studio-title">
+    <div class="wrap">
+      <div class="studio-visual" aria-hidden="true">
+        <div class="studio-room"><img loading="lazy" src="images/clinic.webp" alt="Arcline dental studio interior in Indiranagar"></div>
+      </div>
+      <div class="studio-copy">
+        <span class="tagline">Our Philosophy</span>
+        <h2 id="studio-title">A quiet studio, not a clinical factory.</h2>
+        <p class="lede">Two treatment suites, one lead specialist, and a clinical team that knows your history by heart. We keep our daily schedule intentionally light so every question is answered with patience.</p>
+        <ul class="creds">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>BDS & MDS in Prosthodontics & Oral Implantology, 12 years in practice</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>Low-dose 3D intraoral digital scanners replace uncomfortable rubber impressions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>Class B medical autoclave; sealed sterile pouches opened directly in your view</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>Noise-cancelling Bose headphones and ceiling screens for complete relaxation</li>
+        </ul>
+        <div class="sign">
+          <div><b>Dr. Ananya Rao</b><span>Lead Specialist & Founder · BDS, MDS (AIIMS Alum)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical Specialists -->
+  <section class="team" id="team" aria-labelledby="team-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tagline">Clinical Team</span>
+        <h2 id="team-title">Meet your dedicated doctors</h2>
+        <p class="lede">Specialists with rigorous postgraduate training and a unified commitment to calm, gentle dental medicine.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="doc-card">
+          <div class="doc-avatar">AR</div>
+          <h3>Dr. Ananya Rao</h3>
+          <div class="doc-role">Lead Prosthodontist & Implantologist</div>
+          <p>MDS Prosthodontics with 12+ years of surgical experience. Specializes in guided implants, full smile rehabilitations, and aesthetic ceramic restorations.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="doc-avatar">RM</div>
+          <h3>Dr. Rohan Mehta</h3>
+          <div class="doc-role">Orthodontist & Clear Aligner Specialist</div>
+          <p>MDS Orthodontics, Certified Platinum Invisalign Provider. Expert in digitally planned tooth movement for teens and working adults.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="doc-avatar">SM</div>
+          <h3>Dr. Sahana Murthy</h3>
+          <div class="doc-role">Microscopic Endodontist</div>
+          <p>MDS Conservative Dentistry & Endodontics. Specializes in painless, single-visit root canal treatments under high-powered surgical magnification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How Your First Visit Goes -->
+  <section class="visit" id="visit" aria-labelledby="visit-title">
+    <div class="wrap">
+      <div class="visit-head">
+        <div>
+          <span class="tagline">The Experience</span>
+          <h2 id="visit-title">How your first visit goes</h2>
+        </div>
+        <p class="lede">Zero pressure, no surprises. You remain in complete control of what happens next at every stage.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <div class="n">1</div>
+          <h3>Talk first</h3>
+          <p>Fifteen minutes in a calm consultation lounge, not trapped in the dental chair, discussing your goals and any anxiety.</p>
+        </li>
+        <li class="step">
+          <div class="n">2</div>
+          <h3>See everything</h3>
+          <p>High-resolution intraoral photos and digital X-rays appear instantly on screen beside you, with plain-English walkthroughs.</p>
+        </li>
+        <li class="step">
+          <div class="n">3</div>
+          <h3>Choose your plan</h3>
+          <p>Treatment choices presented side by side with fixed line-item quotes and 0% EMI options. Take it home and think it over.</p>
+        </li>
+        <li class="step">
+          <div class="n">4</div>
+          <h3>Gentle care & follow-up</h3>
+          <p>Relax under noise-canceling headphones. We message you that same evening on WhatsApp to check how you are feeling.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Smile Banner CTA -->
+  <section class="smile" aria-labelledby="smile-title">
+    <img loading="lazy" src="images/smile-band.webp" alt="Patient confident smile">
+    <div class="wrap">
+      <h2 id="smile-title">Not sure where to begin?</h2>
+      <p>Book an unhurried 20-minute diagnostic consultation. We will listen, inspect your teeth in 3D, and tell you honestly what is worth doing and what can safely wait.</p>
+      <div><a href="#book" class="btn btn-white">Book a Consultation</a></div>
+    </div>
+  </section>
+
+  <!-- Patient Reviews -->
+  <section class="reviews" id="reviews" aria-labelledby="rev-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tagline">Patient Stories</span>
+        <h2 id="rev-title">Loved by patients across Bengaluru</h2>
+        <p class="lede">Rated 4.9/5 from 420+ verified Google Reviews. Read why patients travel to Indiranagar for calm care.</p>
+      </div>
+
+      <div class="rev-grid">
+        <div class="rev-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p>“I had severe dental phobia for years until I visited Arcline. Dr. Ananya explained every single step before touching a tooth. The computer-controlled numbing was truly painless. Highly recommend!”</p>
+          </div>
+          <div class="rev-author">
+            <div class="rev-avatar">PS</div>
+            <div>
+              <b>Priyanka Sharma</b>
+              <span>Clear Aligners Patient · Indiranagar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rev-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p>“The clinic feels like a boutique lounge instead of a dental hospital. Appointments strictly start on time. Finished my root canal in 50 minutes while watching Netflix on the ceiling screen!”</p>
+          </div>
+          <div class="rev-author">
+            <div class="rev-avatar">VA</div>
+            <div>
+              <b>Vikram Adiga</b>
+              <span>Single-Visit RCT · Koramangala</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rev-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p>“Got my dental implant done here after comparing four clinics. The 3D scan and guided procedure meant minimal swelling. Written estimate had zero hidden costs. Excellent service.”</p>
+          </div>
+          <div class="rev-author">
+            <div class="rev-avatar">RN</div>
+            <div>
+              <b>Rajesh Nair</b>
+              <span>Guided Implant · Whitefield</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div>
+        <span class="tagline">Clear Answers</span>
+        <h2 id="faq-title">Frequently asked questions</h2>
+        <p class="lede" style="margin-top:16px">Have a question not listed here? Call our clinic desk directly at <a href="tel:+918041228900" style="color:var(--tide-deep);font-weight:600">+91 80 4122 8900</a>.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>Will dental procedures hurt?</summary>
+          <p>We apply a topical anesthetic gel first and deliver local anesthesia using The Wand® computer-assisted system at a slow, regulated flow rate that patients barely register. You can raise your hand to pause at any point during your appointment.</p>
+        </details>
+        <details>
+          <summary>Do you accept health insurance & cashless mediclaim?</summary>
+          <p>Yes. We have cashless affiliations with major corporate and health insurance networks, and we assist you in filing claims for OPD dental coverage. Bring your insurance e-card and we verify eligibility prior to beginning treatment.</p>
+        </details>
+        <details>
+          <summary>What should I do in a dental emergency?</summary>
+          <p>Call our hotline immediately at +91 80 4122 8900. We reserve dedicated emergency slots every single day (including Sundays) for sudden toothache, trauma, broken restorations, or chipped teeth.</p>
+        </details>
+        <details>
+          <summary>Is there parking available at the studio?</summary>
+          <p>Yes. We have two reserved parking slots directly in front of the studio building, plus valet parking on 100 Feet Road. If coming by metro, Indiranagar Metro Station is just a 7-minute walk (500m).</p>
+        </details>
+        <details>
+          <summary>Can I pay in interest-free monthly instalments?</summary>
+          <p>Yes. We offer 0% interest EMI tenures of 3, 6, 9, or 12 months on all procedures above ₹10,000 in partnership with major credit cards and healthcare finance providers.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking & Emergency Section -->
+  <section class="book" id="book" aria-labelledby="book-title">
+    <div class="wrap">
+      <div>
+        <!-- Emergency alert box -->
+        <div class="emergency-banner">
+          <div class="emergency-info">
+            <div class="emergency-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+            </div>
+            <div class="emergency-text">
+              <h3>Have a Dental Emergency?</h3>
+              <p>Severe toothache, broken tooth, or swelling? We have same-day emergency slots available now.</p>
+            </div>
+          </div>
+          <a href="tel:+918041228900" class="btn btn-primary" style="background:#D04437;color:#FFF">Call Emergency Line</a>
+        </div>
+
+        <h2 id="book-title">Reserve your consultation</h2>
+        <p class="lede">Choose your preferred day and slot below. Our front desk reviews your request and sends a confirmation via WhatsApp and SMS.</p>
+        
+        <div class="contact-lines">
+          <div><span>Phone</span><a href="tel:+918041228900">+91 80 4122 8900</a></div>
+          <div><span>WhatsApp</span><a href="https://wa.me/918041228900?text=Hi%20Arcline%2C%20I%20would%20like%20to%20book%20a%20consultation">Chat on WhatsApp</a></div>
+          <div><span>Studio Address</span><p>2nd Floor, 100 Feet Road, HAL 2nd Stage, Indiranagar, Bengaluru 560038 (Opposite Toit)</p></div>
+          <div><span>Studio Hours</span><p>Monday – Sunday, 9:00 AM – 9:00 PM</p></div>
+        </div>
+
+        <div class="location-box">
+          <b>How to Reach Us:</b>
+          <p>• <strong>By Metro:</strong> Indiranagar Purple Line Station (Exit B), 500m walk.<br>
+          • <strong>By Car:</strong> Reserved ground-floor parking on 12th Main Road.<br>
+          • <strong>Landmark:</strong> Above Blue Tokai Coffee, Opposite Toit Brewpub.</p>
+        </div>
+      </div>
+
+      <!-- Booking Form & Dynamic Slot Picker -->
+      <div class="booking-form-box">
+        <form id="bookForm" novalidate>
+          <label>
+            Full Name
+            <input name="name" autocomplete="name" placeholder="e.g. Aditi Rao" required>
+          </label>
+
+          <div class="row2">
+            <label>
+              Phone Number
+              <input name="phone" type="tel" autocomplete="tel" placeholder="10-digit mobile" required pattern="[0-9 +]{10,14}">
+            </label>
+            <label>
+              Email Address (Optional)
+              <input name="email" type="email" autocomplete="email" placeholder="name@example.com">
+            </label>
+          </div>
+
+          <div class="row2">
+            <label>
+              Treatment
+              <select name="service" id="formServiceSelect">
+                <option value="Check-up and cleaning">Check-up & Cleaning (from ₹1,200)</option>
+                <option value="Clear aligners">Clear Aligners Consultation (from ₹65,000)</option>
+                <option value="Dental implants">Dental Implants (from ₹38,000)</option>
+                <option value="Teeth whitening">Teeth Whitening (from ₹9,500)</option>
+                <option value="Root canal treatment">Single-Visit Root Canal (from ₹6,500)</option>
+                <option value="Veneers and crowns">Veneers & Ceramic Crowns (from ₹14,000)</option>
+                <option value="Children’s dentistry">Children’s Dentistry (from ₹900)</option>
+                <option value="Emergency Care">Tooth Pain / Emergency Care</option>
+              </select>
+            </label>
+            <label>
+              Preferred Specialist
+              <select name="doctor">
+                <option value="First Available Specialist">First Available Specialist</option>
+                <option value="Dr. Ananya Rao (Prosthodontist)">Dr. Ananya Rao (Lead Prosthodontist)</option>
+                <option value="Dr. Rohan Mehta (Orthodontist)">Dr. Rohan Mehta (Orthodontist)</option>
+                <option value="Dr. Sahana Murthy (Endodontist)">Dr. Sahana Murthy (Endodontist)</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Preferred Date
+            <input name="day" id="bookingDateInput" type="date" required>
+          </label>
+
+          <div class="slots-container">
+            <span class="slots-label">Select Available Time Slot:</span>
+            <div class="slots-grid" id="slotsGrid">
+              <!-- Dynamically populated -->
+            </div>
+            <input type="hidden" name="time" id="selectedTimeSlot" required>
+          </div>
+
+          <label>
+            Notes or Specific Concerns (Optional)
+            <textarea name="notes" rows="2" placeholder="Tell us about any tooth sensitivity, pain duration, or dental anxiety..."></textarea>
+          </label>
+
+          <p class="form-err" id="formErr" role="alert"></p>
+
+          <button class="btn btn-primary" type="submit" id="btnSubmitBook" style="background:var(--pearl);color:var(--ink);width:100%">
+            Confirm Appointment Request
+          </button>
+          <p class="form-note">🔒 We respect your privacy. Your contact info is strictly used to coordinate your clinical visit.</p>
+        </form>
+
+        <!-- Success Confirmation Card -->
+        <div class="form-success-card" id="formSuccessCard">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Consultation Reserved!</h3>
+          <p style="color:var(--mist);font-size:15px;margin-bottom:12px">Your appointment request has been registered with our clinic reception desk.</p>
+          <div class="booking-ref-badge" id="successRefCode">Ref: ARC-8421</div>
+          
+          <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:16px;text-align:left;font-size:14px;color:var(--mist);margin-bottom:20px;display:grid;gap:6px">
+            <div><strong>Patient:</strong> <span id="confPatientName">--</span></div>
+            <div><strong>Service:</strong> <span id="confService">--</span></div>
+            <div><strong>Date & Time:</strong> <span id="confDateTime">--</span></div>
+            <div><strong>Doctor:</strong> <span id="confDoctor">--</span></div>
+          </div>
+
+          <div class="success-actions">
+            <button class="btn btn-primary btn-sm" id="btnDownloadIcs" style="background:var(--pearl);color:var(--ink)">
+              📅 Add to Calendar
+            </button>
+            <a href="#" class="btn btn-primary btn-sm" id="btnWaChat" target="_blank" style="background:#25D366;color:#FFF">
+              💬 Message Reception
+            </a>
+            <button class="btn btn-ghost btn-sm" id="btnBookAnother" style="color:var(--pearl);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)">
+              Book Another
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Floating Action Bar -->
+<div class="floating-actions" aria-label="Quick contact shortcuts">
+  <a href="https://wa.me/918041228900?text=Hi%20Arcline%20Dental%20Studio%2C%20I%20have%20an%20enquiry" target="_blank" class="floating-btn fab-wa" title="Chat on WhatsApp" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.07c-.24.68-1.39 1.3-1.92 1.38-.49.08-1.12.11-3.62-.93-3.03-1.25-5-4.34-5.15-4.54-.15-.2-1.23-1.64-1.23-3.13 0-1.49.77-2.22 1.05-2.52.28-.3.61-.38.81-.38.2 0 .4.01.58.02.19.01.44-.07.69.53.25.6.86 2.1.94 2.25.08.15.13.33.03.53-.1.2-.15.33-.3.51-.15.18-.32.4-.46.54-.15.15-.31.31-.13.62.18.31.8 1.31 1.71 2.12 1.17 1.04 2.15 1.36 2.46 1.51.31.15.49.13.67-.08.18-.21.79-.92 1-1.23.21-.31.42-.26.7-.15.28.11 1.77.83 2.07.98.3.15.5.23.57.36.07.13.07.76-.17 1.44z"/></svg>
+  </a>
+  <a href="tel:+918041228900" class="floating-btn fab-call" title="Call Clinic" aria-label="Phone">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:14px">
+      <a href="#top" class="logo">
+        <svg viewBox="0 0 34 34" fill="none" width="28" height="28"><path d="M5 29V16C5 9.4 10.4 4 17 4s12 5.4 12 12v13" stroke="#FFF" stroke-width="2.2" stroke-linecap="round"/><path d="M11 29V17a6 6 0 0 1 12 0v12" stroke="#8CC9D1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        Arcline Dental Studio
+      </a>
+      <span>· Indiranagar, Bengaluru</span>
+    </div>
+    <div class="footer-links">
+      <a href="#treatments">Treatments</a>
+      <a href="#studio">Studio</a>
+      <a href="#team">Specialists</a>
+      <a href="/admin.html">Reception Desk</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div>© 2026 Arcline Dental Studio. Precision dental care.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Header scroll state & mobile drawer
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  const toggle = document.getElementById('menuToggle');
+  toggle.addEventListener('click', ()=>{
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click', ()=>{
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+  }));
+
+  // Treatment Accordion
+  document.querySelectorAll('#tlist button').forEach(b => {
+    b.addEventListener('click', () => {
+      const li = b.closest('li');
+      const open = !li.classList.contains('open');
+      li.classList.toggle('open', open);
+      b.setAttribute('aria-expanded', open);
+    });
+  });
+
+  // Treatment category filter tabs
+  const treatTabs = document.querySelectorAll('.treat-tab');
+  const treatItems = document.querySelectorAll('#tlist li');
+  treatTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      treatTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      treatItems.forEach(item => {
+        if (filter === 'all' || item.dataset.cat === filter) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Pre-select service in booking form
+  window.selectServiceInForm = function(serviceName) {
+    const sel = document.getElementById('formServiceSelect');
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value.toLowerCase().includes(serviceName.toLowerCase())) {
+        sel.selectedIndex = i;
+        break;
+      }
+    }
+  };
+
+  // Interactive Before & After Slider
+  const diffSlider = document.getElementById('diffSlider');
+  const imgAfterBox = document.getElementById('imgAfterBox');
+  const sliderHandle = document.getElementById('sliderHandle');
+  let isDragging = false;
+
+  function setSliderPos(x) {
+    const rect = diffSlider.getBoundingClientRect();
+    let pos = ((x - rect.left) / rect.width) * 100;
+    if (pos < 5) pos = 5;
+    if (pos > 95) pos = 95;
+    imgAfterBox.style.width = pos + '%';
+    sliderHandle.style.left = pos + '%';
+  }
+
+  diffSlider.addEventListener('mousedown', e => { isDragging = true; setSliderPos(e.clientX); });
+  window.addEventListener('mouseup', () => { isDragging = false; });
+  window.addEventListener('mousemove', e => { if (isDragging) setSliderPos(e.clientX); });
+
+  diffSlider.addEventListener('touchstart', e => { isDragging = true; setSliderPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', () => { isDragging = false; });
+  window.addEventListener('touchmove', e => { if (isDragging) setSliderPos(e.touches[0].clientX); }, {passive:true});
+
+  // Results Tab switch
+  const resTabs = document.querySelectorAll('.res-tab');
+  const imgBefore = document.getElementById('imgBefore');
+  const imgAfter = document.getElementById('imgAfter');
+  resTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      resTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      imgBefore.src = tab.dataset.imgB;
+      imgAfter.src = tab.dataset.imgA;
+    });
+  });
+
+  // Cost & EMI Calculator
+  const calcCheckboxes = document.querySelectorAll('.calc-chk');
+  const tenureRange = document.getElementById('tenureRange');
+  const tenureLabel = document.getElementById('tenureLabel');
+  const calcTotalDisplay = document.getElementById('calcTotalDisplay');
+  const calcEmiDisplay = document.getElementById('calcEmiDisplay');
+
+  function updateCalculator() {
+    let total = 0;
+    calcCheckboxes.forEach(chk => {
+      const card = chk.closest('.calc-option');
+      if (chk.checked) {
+        card.classList.add('selected');
+        total += parseInt(chk.dataset.price, 10);
+      } else {
+        card.classList.remove('selected');
+      }
+    });
+
+    const tenure = parseInt(tenureRange.value, 10);
+    tenureLabel.textContent = `${tenure} Months`;
+    calcTotalDisplay.textContent = '₹' + total.toLocaleString('en-IN');
+
+    const emi = total > 0 ? Math.round(total / tenure) : 0;
+    calcEmiDisplay.textContent = '₹' + emi.toLocaleString('en-IN') + ' / month';
+  }
+
+  calcCheckboxes.forEach(chk => chk.addEventListener('change', updateCalculator));
+  tenureRange.addEventListener('input', updateCalculator);
+  updateCalculator();
+
+  // Booking Form & Dynamic Slot Loading
+  const bookForm = document.getElementById('bookForm');
+  const dateInput = document.getElementById('bookingDateInput');
+  const slotsGrid = document.getElementById('slotsGrid');
+  const timeInput = document.getElementById('selectedTimeSlot');
+  const formErr = document.getElementById('formErr');
+  const successCard = document.getElementById('formSuccessCard');
+  let currentAppointmentData = null;
+
+  // Set min date to today
+  const todayIso = new Date().toISOString().slice(0, 10);
+  dateInput.min = todayIso;
+  dateInput.value = todayIso;
+
+  async function loadSlotsForDate(dateStr) {
+    slotsGrid.innerHTML = '<div style="color:rgba(255,255,255,.5);font-size:13px;grid-column:1/-1">Loading available slots...</div>';
+    timeInput.value = '';
+
+    try {
+      const res = await fetch(`/api/slots?date=${encodeURIComponent(dateStr)}`);
+      const data = await res.json();
+      slotsGrid.innerHTML = '';
+
+      if (!data.slots || data.slots.length === 0) {
+        slotsGrid.innerHTML = '<div style="color:#FCA5A5;font-size:13px;grid-column:1/-1">No slots available for this date.</div>';
+        return;
+      }
+
+      data.slots.forEach((s, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot-btn';
+        btn.textContent = s.time;
+        if (!s.available) {
+          btn.disabled = true;
+          btn.title = 'Already booked';
+        } else {
+          // Pre-select first available slot
+          if (!timeInput.value && idx === 0) {
+            btn.classList.add('selected');
+            timeInput.value = s.time;
+          }
+          btn.onclick = () => {
+            document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            timeInput.value = s.time;
+            formErr.textContent = '';
+          };
+        }
+        slotsGrid.appendChild(btn);
+      });
+    } catch (err) {
+      slotsGrid.innerHTML = '<div style="color:#FCA5A5;font-size:13px;grid-column:1/-1">Failed to load slots. Please pick a slot.</div>';
+    }
+  }
+
+  dateInput.addEventListener('change', () => loadSlotsForDate(dateInput.value));
+  loadSlotsForDate(todayIso);
+
+  // Form submission
+  bookForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    formErr.textContent = '';
+
+    const name = bookForm.name.value.trim();
+    const phone = bookForm.phone.value.trim();
+    const email = bookForm.email ? bookForm.email.value.trim() : '';
+    const service = bookForm.service.value;
+    const doctor = bookForm.doctor.value;
+    const date = dateInput.value;
+    const time = timeInput.value;
+    const notes = bookForm.notes.value.trim();
+
+    if (!name) {
+      formErr.textContent = 'Please enter your full name.';
+      bookForm.name.focus();
+      return;
+    }
+    if (!/^[0-9 +]{10,14}$/.test(phone)) {
+      formErr.textContent = 'Please enter a valid 10-digit mobile number.';
+      bookForm.phone.focus();
+      return;
+    }
+    if (!date) {
+      formErr.textContent = 'Please select a preferred date.';
+      return;
+    }
+    if (!time) {
+      formErr.textContent = 'Please select an available time slot above.';
+      return;
+    }
+
+    const btnSubmit = document.getElementById('btnSubmitBook');
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Reserving Appointment...';
+
+    try {
+      const res = await fetch('/api/appointments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, email, service, doctor, date, time, notes })
+      });
+
+      const result = await res.json();
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Confirm Appointment Request';
+
+      if (res.ok && result.success) {
+        currentAppointmentData = result.appointment;
+
+        // Populate success card
+        document.getElementById('successRefCode').textContent = `Reference: ${result.appointment.id}`;
+        document.getElementById('confPatientName').textContent = result.appointment.name;
+        document.getElementById('confService').textContent = result.appointment.service;
+        document.getElementById('confDateTime').textContent = `${result.appointment.date} at ${result.appointment.time}`;
+        document.getElementById('confDoctor').textContent = result.appointment.doctor;
+
+        // WhatsApp direct link
+        const waMsg = encodeURIComponent(`Hi Arcline Dental Studio, I have booked appointment ${result.appointment.id} for ${result.appointment.service} on ${result.appointment.date} at ${result.appointment.time}. Please confirm.`);
+        document.getElementById('btnWaChat').href = `https://wa.me/918041228900?text=${waMsg}`;
+
+        bookForm.style.display = 'none';
+        successCard.classList.add('active');
+      } else {
+        formErr.textContent = result.error || 'Failed to reserve slot. Please select another time.';
+      }
+    } catch (err) {
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Confirm Appointment Request';
+      formErr.textContent = 'Network error connecting to booking service. Please try again.';
+    }
+  });
+
+  // Calendar .ics generator
+  document.getElementById('btnDownloadIcs').addEventListener('click', () => {
+    if (!currentAppointmentData) return;
+    const a = currentAppointmentData;
+    const icsContent = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Arcline Dental Studio//Appointment//EN',
+      'BEGIN:VEVENT',
+      `SUMMARY:Dental Visit: ${a.service} at Arcline Dental Studio`,
+      `DESCRIPTION:Appointment Ref: ${a.id}\\nDoctor: ${a.doctor}\\nPatient: ${a.name}`,
+      'LOCATION:Arcline Dental Studio, 2nd Floor, 100 Feet Road, Indiranagar, Bengaluru',
+      `DTSTART:${a.date.replace(/-/g, '')}T100000Z`,
+      `DTEND:${a.date.replace(/-/g, '')}T104500Z`,
+      'STATUS:CONFIRMED',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `Arcline-Appointment-${a.id}.ics`;
+    link.click();
+  });
+
+  // Book another
+  document.getElementById('btnBookAnother').addEventListener('click', () => {
+    successCard.classList.remove('active');
+    bookForm.reset();
+    dateInput.value = todayIso;
+    loadSlotsForDate(todayIso);
+    bookForm.style.display = 'grid';
+  });
+})();
+</script>
+</body>
+</html>

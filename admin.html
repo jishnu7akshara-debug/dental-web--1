@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clinic Desk & Appointments · Arcline Dental Studio</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,100&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --porcelain:#F4F7F8;
+  --pearl:#FFFFFF;
+  --ink:#0F2A3D;
+  --ink-soft:#4A6070;
+  --ink-muted:#7A92A0;
+  --tide:#2C7A86;
+  --tide-deep:#1D5A65;
+  --mist:#D9EAEE;
+  --mist-2:#EAF3F5;
+  --line:#D3E1E5;
+  --green:#2E9468;
+  --green-bg:#E6F5EE;
+  --amber:#C77700;
+  --amber-bg:#FEF6E7;
+  --red:#D04437;
+  --red-bg:#FDEEED;
+  --display:"Fraunces", Georgia, serif;
+  --body:"Figtree", system-ui, sans-serif;
+  --shadow-sm:0 2px 8px rgba(15,42,61,.06);
+  --shadow-md:0 12px 28px -8px rgba(15,42,61,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--porcelain);color:var(--ink);font-size:15px;line-height:1.5;min-height:100vh}
+header{background:var(--pearl);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.header-wrap{max-width:1400px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink)}
+.brand svg{width:32px;height:32px}
+.brand-text b{font-family:var(--display);font-size:1.35rem;font-weight:500;display:block;line-height:1.1}
+.brand-text span{font-size:12px;color:var(--ink-soft);letter-spacing:.02em}
+.header-actions{display:flex;align-items:center;gap:12px}
+.status-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--mist-2);border-radius:999px;font-size:13px;font-weight:500;color:var(--tide-deep)}
+.status-pill i{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 0 3px rgba(46,148,104,.2)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font:600 14px var(--body);cursor:pointer;border:0;transition:.2s;text-decoration:none}
+.btn-primary{background:var(--ink);color:var(--pearl)}
+.btn-primary:hover{background:var(--tide-deep)}
+.btn-outline{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn-outline:hover{background:var(--mist-2);border-color:var(--ink-soft)}
+.btn-sm{padding:6px 12px;font-size:12.5px;border-radius:8px}
+
+.main-content{max-width:1400px;margin:0 auto;padding:32px 28px}
+.page-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:16px}
+.page-header h1{font-family:var(--display);font-size:2rem;font-weight:400}
+.page-header p{color:var(--ink-soft);font-size:14.5px;margin-top:4px}
+
+/* Stats */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:32px}
+.stat-card{background:var(--pearl);border:1px solid var(--line);border-radius:18px;padding:20px 24px;box-shadow:var(--shadow-sm);transition:transform .2s}
+.stat-card:hover{transform:translateY(-2px)}
+.stat-card .label{font-size:13px;font-weight:500;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
+.stat-card .val{font-family:var(--display);font-size:2.2rem;font-weight:500;color:var(--ink);margin:8px 0 4px}
+.stat-card .hint{font-size:12px;color:var(--ink-muted)}
+
+/* Controls */
+.controls-bar{background:var(--pearl);border:1px solid var(--line);border-radius:16px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap;box-shadow:var(--shadow-sm)}
+.search-box{display:flex;align-items:center;gap:10px;background:var(--porcelain);border:1px solid var(--line);padding:8px 14px;border-radius:10px;min-width:280px;flex:1}
+.search-box input{background:none;border:none;font:14px var(--body);color:var(--ink);width:100%;outline:none}
+.search-box svg{width:18px;height:18px;stroke:var(--ink-soft);flex-none}
+.filters-group{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.filter-select{background:var(--porcelain);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:13.5px var(--body);color:var(--ink);outline:none;cursor:pointer}
+.status-tabs{display:flex;background:var(--porcelain);padding:4px;border-radius:12px;gap:2px}
+.tab-btn{border:none;background:transparent;padding:6px 14px;font:500 13px var(--body);color:var(--ink-soft);border-radius:8px;cursor:pointer;transition:.2s}
+.tab-btn.active{background:var(--pearl);color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+/* Table */
+.table-card{background:var(--pearl);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.table-responsive{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;text-align:left}
+th{background:var(--mist-2);font-size:12.5px;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;padding:14px 20px;border-bottom:1px solid var(--line)}
+td{padding:16px 20px;border-bottom:1px solid var(--line);vertical-align:middle;font-size:14px}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(234,243,245,.45)}
+
+.patient-cell b{display:block;font-size:14.5px;color:var(--ink)}
+.patient-cell span{font-size:12.5px;color:var(--ink-soft)}
+.id-tag{font-family:monospace;font-size:12.5px;font-weight:600;color:var(--tide-deep);background:var(--mist);padding:3px 8px;border-radius:6px;display:inline-block}
+
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.badge-pending{background:var(--amber-bg);color:var(--amber)}
+.badge-confirmed{background:var(--green-bg);color:var(--green)}
+.badge-completed{background:var(--mist-2);color:var(--tide-deep)}
+.badge-cancelled{background:var(--red-bg);color:var(--red)}
+
+.actions-cell{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.btn-action{padding:6px 10px;border-radius:8px;font:600 12px var(--body);border:1px solid var(--line);background:var(--pearl);cursor:pointer;transition:.15s}
+.btn-action:hover{background:var(--porcelain)}
+.btn-confirm{color:var(--green);border-color:rgba(46,148,104,.3)}
+.btn-confirm:hover{background:var(--green-bg)}
+.btn-delete{color:var(--red);border-color:rgba(208,68,55,.3)}
+.btn-delete:hover{background:var(--red-bg)}
+
+.empty-state{text-align:center;padding:64px 20px;color:var(--ink-soft)}
+.empty-state svg{width:48px;height:48px;stroke:var(--ink-muted);margin-bottom:14px}
+
+/* Modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(15,42,61,.55);backdrop-filter:blur(4px);display:none;place-items:center;z-index:50;padding:20px}
+.modal-backdrop.open{display:grid}
+.modal-box{background:var(--pearl);border-radius:24px;width:100%;max-width:540px;box-shadow:var(--shadow-md);overflow:hidden;animation:popIn .25s ease}
+@keyframes popIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.modal-head{padding:22px 28px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.modal-head h2{font-family:var(--display);font-size:1.45rem;font-weight:400}
+.modal-close{background:none;border:none;font-size:24px;cursor:pointer;color:var(--ink-soft)}
+.modal-body{padding:24px 28px}
+.modal-form{display:grid;gap:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.modal-form label{font-size:13px;font-weight:600;color:var(--ink-soft);display:grid;gap:6px}
+.modal-form input,.modal-form select,.modal-form textarea{font:14px var(--body);color:var(--ink);background:var(--porcelain);border:1px solid var(--line);padding:10px 14px;border-radius:10px;outline:none}
+.modal-form input:focus,.modal-form select:focus,.modal-form textarea:focus{border-color:var(--tide)}
+.modal-footer{padding:16px 28px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:10px;background:var(--porcelain)}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--ink);color:var(--pearl);padding:14px 22px;border-radius:12px;font-size:14px;box-shadow:var(--shadow-md);display:none;z-index:100;animation:toastIn .3s ease}
+@keyframes toastIn{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-wrap">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 34 34" fill="none"><path d="M5 29V16C5 9.4 10.4 4 17 4s12 5.4 12 12v13" stroke="#0F2A3D" stroke-width="2.2" stroke-linecap="round"/><path d="M11 29V17a6 6 0 0 1 12 0v12" stroke="#2C7A86" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <div class="brand-text">
+        <b>Arcline Dental Studio</b>
+        <span>RECEPTION & CLINICAL PORTAL</span>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="status-pill"><i></i><span>Indiranagar Studio Live</span></div>
+      <a href="/" class="btn btn-outline btn-sm">View Website</a>
+      <button class="btn btn-primary btn-sm" id="btnNewWalkin">+ New Appointment</button>
+    </div>
+  </div>
+</header>
+
+<main class="main-content">
+  <div class="page-header">
+    <div>
+      <h1>Patient Appointments & Schedule</h1>
+      <p>Real-time booking management, consultations calendar, and patient check-ins.</p>
+    </div>
+    <div>
+      <button class="btn btn-outline btn-sm" id="btnRefresh">↻ Refresh Schedule</button>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">Total Bookings</div>
+      <div class="val" id="statTotal">--</div>
+      <div class="hint">All-time studio registrations</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Today's Visits</div>
+      <div class="val" id="statToday" style="color:var(--tide)">--</div>
+      <div class="hint">Consultations booked for today</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Pending Confirmation</div>
+      <div class="val" id="statPending" style="color:var(--amber)">--</div>
+      <div class="hint">Require receptionist phone call</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Confirmed Active</div>
+      <div class="val" id="statConfirmed" style="color:var(--green)">--</div>
+      <div class="hint">Ready for chair assignment</div>
+    </div>
+  </div>
+
+  <div class="controls-bar">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Search patient name, mobile, reference #...">
+    </div>
+    <div class="filters-group">
+      <div class="status-tabs" id="statusTabs">
+        <button class="tab-btn active" data-status="all">All</button>
+        <button class="tab-btn" data-status="pending">Pending</button>
+        <button class="tab-btn" data-status="confirmed">Confirmed</button>
+        <button class="tab-btn" data-status="completed">Completed</button>
+      </div>
+      <input type="date" id="dateFilter" class="filter-select">
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Ref ID</th>
+            <th>Patient Details</th>
+            <th>Treatment</th>
+            <th>Specialist</th>
+            <th>Date & Time</th>
+            <th>Status</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="appointmentsTableBody">
+          <tr><td colspan="7" style="text-align:center;padding:40px">Loading appointments...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<!-- Walk-in Modal -->
+<div class="modal-backdrop" id="walkinModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Record New Appointment</h2>
+      <button class="modal-close" id="closeModal">&times;</button>
+    </div>
+    <form id="walkinForm" class="modal-form modal-body">
+      <label>
+        Patient Full Name
+        <input type="text" name="name" required placeholder="e.g. Aditi Rao">
+      </label>
+      <div class="form-row">
+        <label>
+          Phone Number
+          <input type="tel" name="phone" required placeholder="10-digit mobile">
+        </label>
+        <label>
+          Email (Optional)
+          <input type="email" name="email" placeholder="patient@example.com">
+        </label>
+      </div>
+      <div class="form-row">
+        <label>
+          Treatment / Service
+          <select name="service">
+            <option>Check-up and cleaning</option>
+            <option>Clear aligners consultation</option>
+            <option>Dental implants</option>
+            <option>Teeth whitening</option>
+            <option>Root canal treatment</option>
+            <option>Veneers and crowns</option>
+            <option>Children’s dentistry</option>
+            <option>Emergency / Tooth pain</option>
+          </select>
+        </label>
+        <label>
+          Doctor
+          <select name="doctor">
+            <option>Dr. Ananya Rao (Prosthodontist)</option>
+            <option>Dr. Rohan Mehta (Orthodontist)</option>
+            <option>Dr. Sahana Murthy (Endodontist)</option>
+            <option>First Available Specialist</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-row">
+        <label>
+          Date
+          <input type="date" name="date" required id="modalDate">
+        </label>
+        <label>
+          Slot Time
+          <select name="time" required>
+            <option>09:30 AM</option>
+            <option>10:15 AM</option>
+            <option>11:00 AM</option>
+            <option>11:45 AM</option>
+            <option>02:00 PM</option>
+            <option>02:45 PM</option>
+            <option>03:30 PM</option>
+            <option>04:15 PM</option>
+            <option>05:00 PM</option>
+            <option>05:45 PM</option>
+            <option>06:30 PM</option>
+            <option>07:15 PM</option>
+            <option>08:00 PM</option>
+          </select>
+        </label>
+      </div>
+      <label>
+        Reception Notes
+        <textarea name="notes" rows="2" placeholder="Clinical notes, previous history, allergies..."></textarea>
+      </label>
+      <div class="modal-footer" style="margin: 10px -28px -24px -28px;">
+        <button type="button" class="btn btn-outline btn-sm" id="cancelModal">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-sm">Save Appointment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toastMsg"></div>
+
+<script>
+(function() {
+  const tbody = document.getElementById('appointmentsTableBody');
+  const searchInput = document.getElementById('searchInput');
+  const dateFilter = document.getElementById('dateFilter');
+  const statusTabs = document.getElementById('statusTabs');
+  const btnRefresh = document.getElementById('btnRefresh');
+  const modal = document.getElementById('walkinModal');
+  const btnNewWalkin = document.getElementById('btnNewWalkin');
+  const closeModal = document.getElementById('closeModal');
+  const cancelModal = document.getElementById('cancelModal');
+  const walkinForm = document.getElementById('walkinForm');
+  const modalDate = document.getElementById('modalDate');
+  const toast = document.getElementById('toastMsg');
+
+  let currentStatus = 'all';
+
+  function showToast(text) {
+    toast.textContent = text;
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 3200);
+  }
+
+  modalDate.value = new Date().toISOString().slice(0, 10);
+
+  btnNewWalkin.onclick = () => modal.classList.add('open');
+  closeModal.onclick = () => modal.classList.remove('open');
+  cancelModal.onclick = () => modal.classList.remove('open');
+
+  async function loadStats() {
+    try {
+      const res = await fetch('/api/stats');
+      const data = await res.json();
+      document.getElementById('statTotal').textContent = data.total;
+      document.getElementById('statToday').textContent = data.today;
+      document.getElementById('statPending').textContent = data.pending;
+      document.getElementById('statConfirmed').textContent = data.confirmed;
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function loadAppointments() {
+    try {
+      let url = `/api/appointments?status=${encodeURIComponent(currentStatus)}`;
+      if (searchInput.value.trim()) url += `&search=${encodeURIComponent(searchInput.value.trim())}`;
+      if (dateFilter.value) url += `&date=${encodeURIComponent(dateFilter.value)}`;
+
+      const res = await fetch(url);
+      const list = await res.json();
+
+      if (!list || list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7">
+              <div class="empty-state">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <h3>No appointments found</h3>
+                <p>Try clearing filters or search query.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(item => {
+        const badgeClass = `badge-${item.status.toLowerCase()}`;
+        return `
+          <tr>
+            <td><span class="id-tag">${item.id}</span></td>
+            <td>
+              <div class="patient-cell">
+                <b>${escapeHtml(item.name)}</b>
+                <span>${escapeHtml(item.phone)} ${item.email ? '· ' + escapeHtml(item.email) : ''}</span>
+              </div>
+            </td>
+            <td><strong>${escapeHtml(item.service || 'Consultation')}</strong></td>
+            <td style="color:var(--ink-soft)">${escapeHtml(item.doctor || 'Dr. Ananya Rao')}</td>
+            <td>
+              <b>${item.date}</b><br>
+              <span style="color:var(--tide-deep);font-weight:600">${item.time}</span>
+            </td>
+            <td><span class="badge ${badgeClass}">${item.status}</span></td>
+            <td>
+              <div class="actions-cell">
+                ${item.status === 'Pending' ? `
+                  <button class="btn-action btn-confirm" onclick="updateStatus('${item.id}', 'Confirmed')">Confirm</button>
+                ` : ''}
+                ${item.status === 'Confirmed' ? `
+                  <button class="btn-action" style="color:var(--tide-deep)" onclick="updateStatus('${item.id}', 'Completed')">Complete</button>
+                ` : ''}
+                ${item.status !== 'Cancelled' && item.status !== 'Completed' ? `
+                  <button class="btn-action" onclick="updateStatus('${item.id}', 'Cancelled')">Cancel</button>
+                ` : ''}
+                <button class="btn-action btn-delete" onclick="deleteAppointment('${item.id}')" title="Delete">✕</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    } catch (e) {
+      tbody.innerHTML = `<tr><td colspan="7" style="color:red;padding:24px;text-align:center">Failed to load appointments: ${e.message}</td></tr>`;
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>"']/g, m => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+    }[m]));
+  }
+
+  window.updateStatus = async function(id, newStatus) {
+    try {
+      const res = await fetch(`/api/appointments/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus })
+      });
+      if (res.ok) {
+        showToast(`Appointment ${id} marked as ${newStatus}`);
+        loadAppointments();
+        loadStats();
+      }
+    } catch (e) {
+      alert('Error updating: ' + e.message);
+    }
+  };
+
+  window.deleteAppointment = async function(id) {
+    if (!confirm(`Are you sure you want to remove appointment ${id}?`)) return;
+    try {
+      const res = await fetch(`/api/appointments/${id}`, { method: 'DELETE' });
+      if (res.ok) {
+        showToast(`Appointment ${id} removed.`);
+        loadAppointments();
+        loadStats();
+      }
+    } catch (e) {
+      alert('Error: ' + e.message);
+    }
+  };
+
+  // Status Tabs
+  statusTabs.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      statusTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentStatus = btn.dataset.status;
+      loadAppointments();
+    });
+  });
+
+  // Filter inputs
+  let debounceTimer;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(loadAppointments, 250);
+  });
+  dateFilter.addEventListener('change', loadAppointments);
+  btnRefresh.addEventListener('click', () => {
+    loadAppointments();
+    loadStats();
+    showToast('Schedule refreshed.');
+  });
+
+  // Walk-in form submission
+  walkinForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(walkinForm);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch('/api/appointments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (res.ok) {
+        modal.classList.remove('open');
+        walkinForm.reset();
+        showToast(`Appointment created: ${data.appointment.id}`);
+        loadAppointments();
+        loadStats();
+      } else {
+        alert(data.error || 'Failed to create appointment');
+      }
+    } catch (err) {
+      alert('Network error: ' + err.message);
+    }
+  });
+
+  loadStats();
+  loadAppointments();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "ARC-3225",
+    "name": "Ananya Sen",
+    "phone": "9876543210",
+    "email": "ananya.sen@example.com",
+    "service": "Clear aligners",
+    "doctor": "Dr. Rohan Mehta (Orthodontist)",
+    "date": "2026-11-17",
+    "time": "02:00 PM",
+    "status": "Pending",
+    "notes": "Interested in clear aligners for upper diastema.",
+    "createdAt": "2026-11-17T05:20:16.440Z"
+  },
+  {
+    "id": "ARC-1042",
+    "name": "Priyanka Sharma",
+    "phone": "+91 98451 23456",
+    "email": "priyanka.s@example.com",
+    "service": "Clear aligners",
+    "doctor": "Dr. Rohan Mehta (Orthodontist)",
+    "date": "2026-11-17",
+    "time": "11:30 AM",
+    "status": "Confirmed",
+    "notes": "Discussing 3D smile simulation and aligner kit timeline.",
+    "createdAt": "2026-11-16T14:20:00.000Z"
+  },
+  {
+    "id": "ARC-1043",
+    "name": "Vikram Adiga",
+    "phone": "+91 97312 88412",
+    "email": "vikram.a@example.com",
+    "service": "Dental implants",
+    "doctor": "Dr. Ananya Rao (Lead Prosthodontist)",
+    "date": "2026-11-17",
+    "time": "04:40 PM",
+    "status": "Confirmed",
+    "notes": "Guided single molar implant placement assessment.",
+    "createdAt": "2026-11-16T17:45:00.000Z"
+  },
+  {
+    "id": "ARC-1044",
+    "name": "Kavita Reddy",
+    "phone": "+91 94480 56219",
+    "email": "kavita.r@example.com",
+    "service": "Check-up and cleaning",
+    "doctor": "Dr. Ananya Rao (Lead Prosthodontist)",
+    "date": "2026-11-18",
+    "time": "10:00 AM",
+    "status": "Pending",
+    "notes": "Regular 6-month cleaning and low-dose digital scan.",
+    "createdAt": "2026-11-17T09:15:00.000Z"
+  }
+]
